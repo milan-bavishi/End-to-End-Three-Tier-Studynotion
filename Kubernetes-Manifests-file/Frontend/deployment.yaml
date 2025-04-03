@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: studynotion-frontend
   namespace: three-tier
   labels:
-    role: frontend
+    role: studynotion-frontend
     env: demo
 spec: 
   replicas: 1
@@ -15,17 +15,17 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels: 
-      role: frontend
+      role: studynotion-frontend
   template:
     metadata:
       labels:
-        role: frontend
+        role: studynotion-frontend
     spec: 
       imagePullSecrets:
       - name: ecr-registry-secret
       containers:
-      - name: frontend
-        image: 992382706381.dkr.ecr.us-east-1.amazonaws.com/studynotion-frontend:13
+      - name: studynotion-frontend
+        image: 992382706381.dkr.ecr.us-east-1.amazonaws.com/studynotion-frontend:15
         imagePullPolicy: Always
         env:
           - name: REACT_APP_BACKEND_URL
